@@ -1,36 +1,401 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>SHAO PEILUN</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>邵 培倫 | SHAO PEILUN</title>
+  <style>
+    :root {
+      --blue: #0076c8;
+      --deep-blue: #004f93;
+      --light-blue: #eaf5fc;
+      --text: #1f2933;
+      --muted: #5f6c7b;
+      --card: rgba(255,255,255,0.92);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, "Yu Gothic", "Meiryo", sans-serif;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(0,118,200,0.12), rgba(255,255,255,0.9)),
+        radial-gradient(circle at top right, rgba(0,118,200,0.18), transparent 35%),
+        #f6fbff;
+      line-height: 1.7;
+    }
+
+    .hero {
+      position: relative;
+      padding: 42px 24px 70px;
+      background:
+        linear-gradient(rgba(255,255,255,0.82), rgba(255,255,255,0.94)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      border-bottom: 6px solid var(--blue);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 48px;
+      background: linear-gradient(135deg, transparent 50%, var(--blue) 50%);
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      max-width: 360px;
+      width: 70%;
+      height: auto;
+      margin-bottom: 36px;
+    }
+
+    .main-card {
+      display: grid;
+      grid-template-columns: 280px 1fr 330px;
+      gap: 28px;
+      align-items: center;
+      background: var(--card);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 18px 50px rgba(0, 69, 126, 0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .photo {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border-radius: 18px;
+      background:
+        linear-gradient(135deg, #dbeafe, #ffffff);
+      border: 1px solid #d6e8f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--deep-blue);
+      text-align: center;
+      font-weight: 700;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .name-ja {
+      font-size: 48px;
+      letter-spacing: 0.18em;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .kana {
+      font-size: 18px;
+      letter-spacing: 0.15em;
+      margin: 8px 0 0;
+      color: var(--text);
+    }
+
+    .name-en {
+      font-size: 28px;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      font-weight: 700;
+      margin: 4px 0 18px;
+    }
+
+    .degree {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--light-blue);
+      color: var(--deep-blue);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .company {
+      border-top: 1px solid #cfe3f2;
+      padding-top: 18px;
+      font-size: 16px;
+    }
+
+    .company strong {
+      display: block;
+      font-size: 24px;
+      margin-top: 2px;
+    }
+
+    .company-en {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .contact {
+      background: #ffffff;
+      border: 1px solid #d7e7f3;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(0, 79, 147, 0.08);
+    }
+
+    .section-title {
+      color: var(--deep-blue);
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      font-weight: 800;
+      margin: 0 0 14px;
+      border-bottom: 3px solid var(--blue);
+      display: inline-block;
+      padding-bottom: 4px;
+    }
+
+    .contact p {
+      margin: 10px 0;
+    }
+
+    a {
+      color: var(--deep-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 1080px;
+      margin: 34px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .box {
+      background: var(--card);
+      border: 1px solid #d7e7f3;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(0, 79, 147, 0.08);
+    }
+
+    .box h2 {
+      color: var(--deep-blue);
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+
+    ul {
+      padding-left: 1.2em;
+      margin: 0;
+    }
+
+    .services {
+      max-width: 1080px;
+      margin: 0 auto 36px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      text-align: center;
+      background: #ffffff;
+      border: 1px solid #d7e7f3;
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .service-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      background: var(--light-blue);
+      color: var(--deep-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+    }
+
+    footer {
+      background: linear-gradient(90deg, var(--deep-blue), var(--blue));
+      color: white;
+      text-align: center;
+      padding: 18px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 920px) {
+      .main-card {
+        grid-template-columns: 1fr;
+      }
+
+      .photo {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      .content,
+      .services {
+        grid-template-columns: 1fr;
+      }
+
+      .name-ja {
+        font-size: 38px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>SHAO PEILUN</h1>
+  <header class="hero">
+    <div class="container">
+      <img class="logo" src="logo.png" alt="CREATEC Civil Engineering & Consultants">
 
-<p>Ph.D.</p>
+      <div class="main-card">
+        <div class="photo">
+          <!-- 头像上传后，把下面这一行取消注释，并把 photo.jpg 上传到仓库 -->
+          <!-- <img src="photo.jpg" alt="邵 培倫"> -->
+          PHOTO<br>COMING SOON
+        </div>
 
-<p>株式会社クレアテック</p>
+        <div>
+          <h1 class="name-ja">邵 培倫</h1>
+          <p class="kana">ショウ バイリン</p>
+          <p class="name-en">SHAO PEILUN</p>
 
-<p>構造解析エンジニア</p>
+          <div class="degree">博士（工学）</div>
 
-<h2>専門分野</h2>
+          <div class="company">
+            総合建設コンサルタント
+            <strong>株式会社クレアテック</strong>
+            <div class="company-en">CREATEC Civil Engineering & Consultants</div>
+          </div>
+        </div>
 
-<ul>
-<li>RC構造非線形FEM解析</li>
-<li>DIANA</li>
-<li>橋梁耐震解析</li>
-</ul>
+        <div class="contact">
+          <h2 class="section-title">CONTACT</h2>
+          <p>〒101-0065<br>
+          東京都千代田区西神田2丁目5-8<br>
+          共和15番館6階
+          <a href="https://www.google.com/maps/search/?api=1&query=東京都千代田区西神田2丁目5-8 共和15番館6階" target="_blank">[MAP]</a></p>
 
-<h2>連絡先</h2>
+          <p>TEL: <a href="tel:0362689108">03-6268-9108</a></p>
+          <p>FAX: 03-6268-9109</p>
+          <p>E-mail: <a href="mailto:shao@createc-jp.com">shao@createc-jp.com</a></p>
+          <p>Website: <a href="https://createc-jp.com/" target="_blank">createc-jp.com</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<p>
-Email:
-<a href="mailto:spl812151@gmail.com">
-spl812151@gmail.com
-</a>
-</p>
+  <main>
+    <section class="content">
+      <div class="box">
+        <h2>PROFILE / プロフィール</h2>
+        <p>
+          構造解析エンジニアとして、RC構造物および橋梁構造物を対象とした
+          非線形FEM解析、耐震性能評価、構造設計・照査に関する業務に従事しています。
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>EXPERTISE / 専門分野</h2>
+        <ul>
+          <li>RC構造非線形FEM解析</li>
+          <li>橋梁耐震解析</li>
+          <li>耐震性能評価</li>
+          <li>構造設計・照査</li>
+          <li>数値解析（DIANA、WCOMD Studio、FEANX等）</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>EDUCATION / 学歴</h2>
+        <p>
+          山口大学大学院 創成科学研究科<br>
+          博士（工学）
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>RESEARCH / 研究テーマ</h2>
+        <ul>
+          <li>RC部材の繰返し曲げ挙動に関する研究</li>
+          <li>鉄筋とコンクリートの付着特性を考慮した解析手法</li>
+          <li>非線形有限要素法による構造物の耐震性能評価</li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h2>PUBLICATION / 代表論文</h2>
+        <p>
+          Advanced Prediction for Cyclic Bending Behavior of RC Columns Based on
+          the Idealization of Reinforcement Bond Properties<br>
+          <a href="https://doi.org/10.3390/app13116379" target="_blank">
+            Applied Sciences, 2023, 13(11), 6379
+          </a>
+        </p>
+      </div>
+
+      <div class="box">
+        <h2>LINKS / 外部リンク</h2>
+        <ul>
+          <li><a href="https://createc-jp.com/" target="_blank">CREATEC Official Website</a></li>
+          <li><a href="https://scholar.google.com/" target="_blank">Google Scholar</a></li>
+          <li><a href="https://orcid.org/" target="_blank">ORCID</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="service">
+        <div class="service-icon">🌉</div>
+        <strong>BRIDGES</strong><br>
+        橋梁解析・耐震性能評価
+      </div>
+
+      <div class="service">
+        <div class="service-icon">🏢</div>
+        <strong>STRUCTURES</strong><br>
+        構造解析・設計照査
+      </div>
+
+      <div class="service">
+        <div class="service-icon">📊</div>
+        <strong>CONSULTING</strong><br>
+        調査・コンサルティング
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © CREATEC Civil Engineering & Consultants
+  </footer>
 
 </body>
 </html>
